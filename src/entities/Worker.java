@@ -65,24 +65,14 @@ public class Worker {
         contracts.remove(contract);
     }
 
-    public Double income (int mouth, int year){
-        double bonus = 0;
-        for (int i = 0; i < contracts.size(); i++) {
-            if (contracts.get(i).getDate().getMonth() == mouth && contracts.get(i).getDate().getYear() == year){
-                bonus += contracts.get(i).totalValue();
-            }
-        }
-        return baseSalary + bonus;
-    }
-
-    public Double income1 (int mount, int year){
+    public Double income (int mount, int year){
         double bonus = 0;
         Calendar calendar = Calendar.getInstance();
         for (HourContract obj :contracts) {
             calendar.setTime(obj.getDate());
             int calendar_mount = 1 + calendar.get(Calendar.MONTH);
             int calendar_year = calendar.get(Calendar.YEAR);
-            if(mount ==calendar_mount && year ==calendar_year){
+            if(mount == calendar_mount && year == calendar_year){
                 bonus += obj.totalValue();
             }
         }

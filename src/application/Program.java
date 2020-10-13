@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Program {
@@ -55,23 +56,17 @@ public class Program {
 
         System.out.print("Enter month and year to calculate income (MM/YYYY): ");
 
+        Calendar income = Calendar.getInstance();
+
         String data = scanner.next();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/yyyy");
-        Date date = simpleDateFormat.parse(data);
-        Double sumTotal = null;
-
-        for (int i = 0; i < worker.getContracts().size(); i++) {
-            if(worker.getContracts().get(i).getDate().getMonth() == date.getMonth() && worker.getContracts().get(i).getDate().getYear() == date.getYear() ){
-                sumTotal = worker.income(date.getMonth(), date.getYear());
-            }
-        }
-
-        
+        int income_mounth = Integer.parseInt(data.substring(0,2));
+        int income_year = Integer.parseInt(data.substring(3,7));
+        System.out.println("mounth " + income_mounth + ": year " + income_year);
 
         System.out.println();
         System.out.println("Name: " + worker.getName());
         System.out.println("Department: " + worker.getDepartment().getName());
-        System.out.println("Income for: " + data + " " + String.format("%.2f",sumTotal));
+        System.out.println("Income for: " + data + " " + String.format("%.2f", worker.income(income_mounth, income_year)));
 
         scanner.close();
     }

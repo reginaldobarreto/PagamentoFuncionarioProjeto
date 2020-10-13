@@ -76,12 +76,17 @@ public class Worker {
     }
 
     public Double income1 (int mount, int year){
-
+        double bonus = 0;
         Calendar calendar = Calendar.getInstance();
         for (HourContract obj :contracts) {
             calendar.setTime(obj.getDate());
-            int mount = 
+            int calendar_mount = 1 + calendar.get(Calendar.MONTH);
+            int calendar_year = calendar.get(Calendar.YEAR);
+            if(mount ==calendar_mount && year ==calendar_year){
+                bonus += obj.totalValue();
+            }
         }
+        return baseSalary + bonus;
     }
 
 }

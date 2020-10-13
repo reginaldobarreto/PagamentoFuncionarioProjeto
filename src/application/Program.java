@@ -66,6 +66,8 @@ public class Program {
             }
         }
 
+        
+
         System.out.println();
         System.out.println("Name: " + worker.getName());
         System.out.println("Department: " + worker.getDepartment().getName());
